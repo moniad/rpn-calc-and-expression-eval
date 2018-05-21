@@ -166,14 +166,14 @@ int main(){
 	                        wyn+=top;
 	                        op.pop(); pr.pop();
 	                        if(!op.empty())
-	                        {if( pr.top() < prio[i] || (pr.top() == prio[i+2] && op.top() == '^')) break;}
+	                        {if( pr.top() < prio[i] || (pr.top() == prio[i] && op.top() == '^')) break;}
 	                        else break;
 	                    } while(true);
 	                    wyn+=wyr[i+1]; //dopisujemy literkę
 	                    wyn+=wyr[i]; //oraz znak
 	                }
 	                while(!op.empty()){
-	                    top=op.top(); //stos na pewno nie byl pusty, bo coś wrzucilismy na poczatku
+	                    top=op.top();
 	                    ///cout<<" STOS.TOP(): "<<top<<" ";
 	                    wyn+=top;
 	                    op.pop(); pr.pop();
