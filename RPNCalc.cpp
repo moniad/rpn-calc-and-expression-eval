@@ -138,20 +138,20 @@ int main(){
 	                    ///cout<<"IF: "<<wyn<<endl;
 	                    //sciagamy ze stosu
 	                }
-	                else{ //sciagamy ze stosu, dopoki priorytet operatora jest wiekszy, czyli * /. + - etc., potem dopisujemy do wyniku ostatni operator i sciagamy reszte ze stosu
+	                else{ //sciagamy ze stosu, dopoki priorytet operatora jest wiekszy, czyli * /, + - etc., potem dopisujemy do wyniku ostatni operator i sciagamy reszte ze stosu
 	                    do{
 	                        top=op.top(); //stos na pewno nie byl pusty, bo coś wrzucilismy na poczatku
 	                        wyn+=top;
 	                        op.pop(); pr.pop();
 	                        if(!op.empty())
-	                        {if( pr.top() < prio[i] || (pr.top() == prio[i+2] && op.top() == '^')) break;}
+	                        {if( pr.top() < prio[i] || (pr.top() == prio[i] && op.top() == '^')) break;}
 	                        else break;
 	                    } while(true);
 	                    wyn+=wyr[i+1]; //dopisujemy literkę
 	                    wyn+=wyr[i]; //oraz znak
 	                }
 	                while(!op.empty()){
-	                    top=op.top(); //stos na pewno nie byl pusty, bo coś wrzucilismy na poczatku
+	                    top=op.top();
 	                    ///cout<<" STOS.TOP(): "<<top<<" ";
 	                    wyn+=top;
 	                    op.pop(); pr.pop();
