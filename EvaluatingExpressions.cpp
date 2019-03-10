@@ -26,9 +26,8 @@ bool isClosing (char x){
     return x==')';
 }
 string change(string wyr, int prio[]){ //zamieniam wyr z nawiasami na bez nawiasow, ale ze zwiekszonymi priorytetami działań
-	int dl=wyr.size(), br=0; //ile jest nawiasow
+	int dl=wyr.size(), br=0; //br - how many brackets there are
 	string wyn=""; int j=0; //index po wyniku
-	///cout<<"ZMIENIAJ"<<endl;
 	for(int i=0; i<dl; i++){
 		if(!isASign(wyr[i])) {
 			wyn+=wyr[i];
@@ -97,7 +96,6 @@ int main(){
     while (a-->0){
         cout<<"Podaj wyrazenie:";
         cin>>first;
-        ///cout<<first<<endl;
         int dl=first.size();
         int *prio=new int[dl]; //priorytety operatorow
         for(int i=0; i<dl; i++)
@@ -131,18 +129,16 @@ int main(){
                 if( pr.top() > prio[i+2] || (pr.top() == prio[i+2] && top != '^') ){ //sciagamy ze stosu
                     do{
                         top=op.top(); //stos na pewno nie byl pusty, bo coś wrzucilismy na poczatku
-                        ///cout<<"TOP:"<<top<<endl;
                         wyn+=top;
                         op.pop(); pr.pop();
                         if(!op.empty())
                         {
-                        	///cout<<"niepusty"<<endl;\
                         	cout<<pr.top()<<", "<<prio[i+2]<<endl;
                         	if( pr.top() < prio[i+2] || (pr.top() == prio[i+2] && op.top() == '^')) break;}
                         else break;
                     } while(true);
                 }
-                ///cout<<"przenosimy się na kolejny operator: "<<endl;
+                ///cout<<"moving to next sign"<<endl;
                 i+=2;
             }
 ///cout<<"one more if: "<<wyn<<endl;
@@ -184,10 +180,9 @@ int main(){
                     wyn+=wyr[i];
                 }
             }
-            ///cout<<endl<<endl;
             cout<<wyn<<endl;
 
-///CZĘŚĆ DRUGA, WYZNACZANIE WARTOŚCI WYRAŻENIA, KORZYSTAJĄC Z KONWERSJI Z RPN NA POSTAĆ INFIKSOWĄ
+///PART II - EVALUATING THE EXPRESSION, CONVERTING RPN EXPRESSION TO INFIX EXPRESSION
 
             stack<long double> st;
             long double a,b;
@@ -201,8 +196,8 @@ int main(){
                     cout<<"input: "<<input<<" ";
                     st.push(input);
                 }
-                else{ //zakladamy, ze wyrazenie jest poprawne, bo bylo przekonwertowane wczesniej przez moj kalkulator
-                cout<<wyn[i]<<" <- wyr ";
+                else{ //we suppose the expression is correct because it was converted using my calculator
+                cout<<wyn[i]<<" <- expression ";
                    // if(!st.empty()){
                     b=st.top(); st.pop();
 
